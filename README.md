@@ -12,3 +12,4 @@
 10. refetchOnWindowFocus: when focus the window trigger the query
 11. refetchInterval: polling - this will pause if screen lost the focus
 12. refetchIntervalInBackground: polling in background/ window not in focus mode
+13. onClick - enable: false in config, access refetch method, call it in eventHandler

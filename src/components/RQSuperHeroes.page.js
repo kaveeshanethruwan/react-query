@@ -7,24 +7,26 @@ const fetchSuperHeroes = () => {
 }
 
 export const RQSuperHeroesPage = () => {
-    const { isLoading, data, isError, error, isFetching } = useQuery('super-heroes', fetchSuperHeroes, {
+    const { isLoading, data, isError, error, isFetching, refetch } = useQuery('super-heroes', fetchSuperHeroes, {
         cacheTime: 300000, // default timeout: 5min
         staleTime: 0, // default: 0ms -- background fetch disable for until reach to given time
         refetchOnMount: true, // default: true -- initially when go to the component it will fetch, then again go somewhere and come back, it will not fetch if it set to false
         refetchOnWindowFocus: true, // default: true -- when focus also its doing refetching
         refetchInterval: false, // defaults: false -- if its set to 2000ms every 2s it will call that api
-        refetchIntervalInBackground: false // defaults: false -- polling in background
+        refetchIntervalInBackground: false, // defaults: false -- polling in background
+        enabled: false
     })
 
     // if (isFetching) return <h2>Fetching from the cache</h2>
 
-    if (isLoading) return <h2>Loading...</h2>
+    if (isLoading || isFetching) return <h2>Loading...</h2>
 
     if (isError) return <h2>{error.message}</h2>
 
     return (
         <>
             <h2>RQ Super Heroes Page</h2>
+            <button onClick={refetch}>Load data</button>
             {
                 data?.data.map((item) => (
                     <div key={item.name}>{item.name}</div>
