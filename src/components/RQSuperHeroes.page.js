@@ -9,6 +9,7 @@ const fetchSuperHeroes = () => {
 export const RQSuperHeroesPage = () => {
     const { isLoading, data, isError, error, isFetching } = useQuery('super-heroes', fetchSuperHeroes, {
         cacheTime: 300000, // default timeout: 5min
+        staleTime: 0 // default: 0ms -- background fetch disable for until reach to given time
     })
 
     // if (isFetching) return <h2>Fetching from the cache</h2>
