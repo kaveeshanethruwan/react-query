@@ -8,3 +8,7 @@
 6. when its render it will lookup in cache. to isFetching will indicate that event.
 7. if you need to change the cache time, by passing 3rd arg into useQuery you can do that.
 8. stale time: controller for background fetch
+9. refetchOnMount: when component mount will trigger the query
+10. refetchOnWindowFocus: when focus the window trigger the query
+11. refetchInterval: polling - this will pause if screen lost the focus
+12. refetchIntervalInBackground: polling in background/ window not in focus mode

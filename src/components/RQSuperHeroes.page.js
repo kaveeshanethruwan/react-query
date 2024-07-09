@@ -12,6 +12,8 @@ export const RQSuperHeroesPage = () => {
         staleTime: 0, // default: 0ms -- background fetch disable for until reach to given time
         refetchOnMount: true, // default: true -- initially when go to the component it will fetch, then again go somewhere and come back, it will not fetch if it set to false
         refetchOnWindowFocus: true, // default: true -- when focus also its doing refetching
+        refetchInterval: false, // defaults: false -- if its set to 2000ms every 2s it will call that api
+        refetchIntervalInBackground: false // defaults: false -- polling in background
     })
 
     // if (isFetching) return <h2>Fetching from the cache</h2>
