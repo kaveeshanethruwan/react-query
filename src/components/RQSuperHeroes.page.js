@@ -9,7 +9,9 @@ const fetchSuperHeroes = () => {
 export const RQSuperHeroesPage = () => {
     const { isLoading, data, isError, error, isFetching } = useQuery('super-heroes', fetchSuperHeroes, {
         cacheTime: 300000, // default timeout: 5min
-        staleTime: 0 // default: 0ms -- background fetch disable for until reach to given time
+        staleTime: 0, // default: 0ms -- background fetch disable for until reach to given time
+        refetchOnMount: true, // default: true -- initially when go to the component it will fetch, then again go somewhere and come back, it will not fetch if it set to false
+        refetchOnWindowFocus: true, // default: true -- when focus also its doing refetching
     })
 
     // if (isFetching) return <h2>Fetching from the cache</h2>
