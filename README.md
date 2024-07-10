@@ -16,3 +16,4 @@
 14. onSuccess, onError - in useQuery these two configs are there to set callback func accordingly. both will get their own params, onError will get call after 3 retry count
 15. select: after successful data fetching, if want to transform the data, select will provide a func to do it and return. useQuery will output that as data.
 16. customHook for common use 
+17. query by id
