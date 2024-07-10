@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React from 'react'
 import { useQuery } from 'react-query'
+import { CustomSuperHeroes } from './CustomSuperHeroes'
 
 const fetchSuperHeroes = () => {
     return axios.get('http://localhost:4000/superheroes')
@@ -45,6 +46,7 @@ export const RQSuperHeroesPage = () => {
                 ))
             }
             <button onClick={refetch}>Load data</button>
+            {/* <CustomSuperHeroes /> */}
         </>
     )
 }
