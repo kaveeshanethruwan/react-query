@@ -24,7 +24,10 @@ export const RQSuperHeroesPage = () => {
         refetchIntervalInBackground: false, // defaults: false -- polling in background
         // enabled: false,
         onSuccess: onSuccess,
-        onError: onError
+        onError: onError,
+        select: (data) => {
+            return data.data.map(hero => hero.name)
+        }
     })
 
     // if (isFetching) return <h2>Fetching from the cache</h2>
@@ -37,8 +40,8 @@ export const RQSuperHeroesPage = () => {
         <>
             <h2>RQ Super Heroes Page</h2>
             {
-                data?.data.map((item) => (
-                    <div key={item.name}>{item.name}</div>
+                data.map((item) => (
+                    <div key={item}>{item}</div>
                 ))
             }
             <button onClick={refetch}>Load data</button>
