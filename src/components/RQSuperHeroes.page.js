@@ -6,6 +6,14 @@ const fetchSuperHeroes = () => {
     return axios.get('http://localhost:4000/superheroes')
 }
 
+const onSuccess = data => {
+    console.log('success callback')
+}
+
+const onError = error => {
+    console.log('error callback')
+}
+
 export const RQSuperHeroesPage = () => {
     const { isLoading, data, isError, error, isFetching, refetch } = useQuery('super-heroes', fetchSuperHeroes, {
         cacheTime: 300000, // default timeout: 5min
@@ -14,7 +22,9 @@ export const RQSuperHeroesPage = () => {
         refetchOnWindowFocus: true, // default: true -- when focus also its doing refetching
         refetchInterval: false, // defaults: false -- if its set to 2000ms every 2s it will call that api
         refetchIntervalInBackground: false, // defaults: false -- polling in background
-        enabled: false
+        // enabled: false,
+        onSuccess: onSuccess,
+        onError: onError
     })
 
     // if (isFetching) return <h2>Fetching from the cache</h2>
@@ -26,12 +36,12 @@ export const RQSuperHeroesPage = () => {
     return (
         <>
             <h2>RQ Super Heroes Page</h2>
-            <button onClick={refetch}>Load data</button>
             {
                 data?.data.map((item) => (
                     <div key={item.name}>{item.name}</div>
                 ))
             }
+            <button onClick={refetch}>Load data</button>
         </>
     )
 }
